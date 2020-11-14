@@ -3,12 +3,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 // Modulos creados
 const usuario = require("./routes/usuario");
-//const auth = require("./routes/auth");
+const auth = require("./routes/auth");
 // App
 const app = express();
 app.use(express.json());
 app.use("/api/usuario/", usuario);
-//app.use("/api/auth/", auth);
+app.use("/api/auth/", auth);
 
 // Pruerto de ejecucion
 const port = process.env.PORT || 3000;
@@ -25,17 +25,23 @@ mongoose
   .catch((error) => console.log("DB conection: OFF"));
 
 /* 
-26-10
+registro
 {
     "nombre": "Jose",
     "apellido": "Jimenez",
     "tipoDocumento": "CC",
-    "numeroDocumento": "72275057",
+    "numeroDocumento": "123456789",
     "departamento": "Bogotá",
     "ciudad": "Bogotá",
     "direccion": "Suba",
-    "telefono": "3166598450",
+    "telefono": "316-659 9876",
     "correo": "jf@mail.com",
     "pass": "1234",
 } 
+
+login
+{
+    "correo": "jf@mail.com",
+    "pass":"1234"
+}
 */
